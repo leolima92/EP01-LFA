@@ -204,7 +204,7 @@ VIII = 8
 
 ```
 
-roman-transducer/
+EP01-LFA/
 │
 ├── src/
 │   └── main.rb
@@ -267,15 +267,3 @@ docs/automato.mmd
 
 ---
 
-# Autores
-
-Projeto desenvolvido para a disciplina de **Linguagens Formais e Autômatos**.
-```
-
----
-
-## Próximo passo importante
-
-Agora precisamos criar o **diagrama Mermaid do autômato**, porque o professor pediu isso explicitamente.
-
-Se quiser, eu posso te gerar **o Mermaid completo do AFD romano** que encaixa exatamente com esse código.
