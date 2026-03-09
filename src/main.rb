@@ -68,10 +68,52 @@ class ADF
         break
 
   
-      # DEZENAS 
-   
-      in [_, "qT0"]
-        puts "TODO: implementar dezenas"
+      # DEZENAS
+
+      in ["X", "qT0"]
+        estado = "qX"
+        @total += 10
+
+      in ["X", "qX"]
+        estado = "qXX"
+        @total += 10
+
+      in ["X", "qXX"]
+        estado = "qXXX"
+        @total += 10
+
+      in ["L", "qX"]
+        estado = "qTF"
+        @total += 30   
+      in ["C", "qX"]
+        estado = "qTF"
+        @total += 80   
+
+      in ["L", "qT0"]
+        estado = "qL"
+        @total += 50
+
+      in ["X", "qL"]
+        estado = "qLX"
+        @total += 10
+
+      in ["X", "qLX"]
+        estado = "qLXX"
+        @total += 10
+
+      in ["X", "qLXX"]
+        estado = "qLXXX"
+        @total += 10
+
+
+      in ["I" | "V", "qT0" | "qX" | "qXX" | "qXXX" | "qL" | "qLX" | "qLXX" | "qLXXX" | "qTF"]
+        estado = "qU0"
+        next
+
+      # terminou em dezenas
+      in ["", "qT0" | "qX" | "qXX" | "qXXX" | "qL" | "qLX" | "qLXX" | "qLXXX" | "qTF"]
+        puts "Aceito"
+        puts "Valor decimal: #{@total}"
         break
 
       # UNIDADES
@@ -90,11 +132,11 @@ class ADF
 
       in ["V", "qI"]
         estado = "qF"
-        @total += 3   # IV
+        @total += 3   
 
       in ["X", "qI"]
         estado = "qF"
-        @total += 8   # IX
+        @total += 8  
 
       in ["V", "qU0"]
         estado = "qV"
@@ -129,5 +171,12 @@ class ADF
   end
 end
 
-adf = ADF.new("Iv")
-adf.iniciar
+print "Digite um número romano: "
+entrada = gets
+
+if entrada.nil? || entrada.strip.empty?
+  puts "Entrada inválida"
+else
+  adf = ADF.new(entrada)
+  adf.iniciar
+end
