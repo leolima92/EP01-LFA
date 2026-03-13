@@ -63,11 +63,31 @@ class ADF
   
       # CENTENAS (TODO DO GRUPO)
    
-      in [_, "qH0"]
+      in ["C" | "D", "qH0"]
         puts "TODO: implementar centenas"
         break
+        
+      in ["C", "qH0"]
+        estado = "qC1"
+        @total += 100
 
-  
+      in ["C", "qC1"]
+        estado = "qC2"
+        @total += 100
+
+      in ["C", "qC2"]
+        estado = "qC3"
+        @total += 100
+
+      in ["C", "qC3"]
+        puts "Erro"
+        break
+      in ["D", "qH0"]
+        estado = "qD1"
+        @total += 500
+
+      
+      
       # DEZENAS
 
       in ["X", "qT0"]
