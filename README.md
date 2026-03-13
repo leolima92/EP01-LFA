@@ -261,9 +261,61 @@ O diagrama do autômato foi modelado utilizando **Mermaid** e pode ser encontrad
 
 ```
 
-docs/automato.mmd
+docs/modelagem.mmd
 
 ```
+# Diagrama do Autômato
 
----
+```mermaid
+stateDiagram-v2
+    direction TB
 
+    state "Bloco de Milhares" as Milhares {
+        [*] --> qM0
+        qM0 --> qM1 : M
+        qM1 --> qM2 : M
+        qM2 --> qM3 : M
+    }
+
+    state "Bloco de Centenas" as Centenas {
+        qH0 --> qC : C
+        qC --> qCC : C
+        qCC --> qCCC : C
+        qC --> qHF : D (CD) / M (CM)
+        qH0 --> qD : D
+        qD --> qDC : C
+        qDC --> qDCC : C
+        qDCC --> qDCCC : C
+    }
+
+    state "Bloco de Dezenas" as Dezenas {
+        qT0 --> qX : X
+        qX --> qXX : X
+        qXX --> qXXX : X
+        qX --> qTF : L (XL) / C (XC)
+        qT0 --> qL : L
+        qL --> qLX : X
+        qLX --> qLXX : X
+        qLXX --> qLXXX : X
+    }
+
+    state "Bloco de Unidades" as Unidades {
+        qU0 --> qI : I
+        qI --> qII : I
+        qII --> qIII : I
+        qI --> qF : V (IV) / X (IX)
+        qU0 --> qV : V
+        qV --> qVI : I
+        qVI --> qVII : I
+        qVII --> qVIII : I
+    }
+
+    %% Conexões verticais entre blocos
+    [*] --> Milhares
+    Milhares --> Centenas : C, D
+    Centenas --> Dezenas : X, L
+    Dezenas --> Unidades : I, V
+
+    %% Aceitação final
+    Unidades --> [*]
+```
