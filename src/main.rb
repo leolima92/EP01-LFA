@@ -68,25 +68,28 @@ class ADF
         break
         
       in ["C", "qH0"]
-        estado = "qC1"
+        estado = "qC"
         @total += 100
 
-      in ["C", "qC1"]
-        estado = "qC2"
+      in ["D", "qC"]
+        estado = "qD"
+
+      in ["C", "qC"]
+        estado = "qCC"
         @total += 100
 
-      in ["C", "qC2"]
-        estado = "qC3"
+      in ["C", "qCC"]
+        estado = "qCCC"
         @total += 100
 
-      in ["C", "qC3"]
+      in ["C", "qCCC"]
         puts "Erro"
         break
-      in ["D", "qH0"]
-        estado = "qD1"
-        @total += 500
 
       
+      in ["D", "qH0"]
+        estado = "qD"
+        @total += 500
       
       # DEZENAS
 
