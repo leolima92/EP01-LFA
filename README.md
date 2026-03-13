@@ -264,10 +264,12 @@ O diagrama do autômato foi modelado utilizando **Mermaid** e pode ser encontrad
 docs/modelagem.mmd
 
 ```
+# Diagrama do Autômato
+
+```mermaid
 stateDiagram-v2
     direction TB
 
-    %% Bloco de Milhares
     state "Bloco de Milhares" as Milhares {
         [*] --> qM0
         qM0 --> qM1 : M
@@ -275,9 +277,7 @@ stateDiagram-v2
         qM2 --> qM3 : M
     }
 
-    %% Bloco de Centenas
     state "Bloco de Centenas" as Centenas {
-        [*] --> qH0
         qH0 --> qC : C
         qC --> qCC : C
         qCC --> qCCC : C
@@ -288,9 +288,7 @@ stateDiagram-v2
         qDCC --> qDCCC : C
     }
 
-    %% Bloco de Dezenas
     state "Bloco de Dezenas" as Dezenas {
-        [*] --> qT0
         qT0 --> qX : X
         qX --> qXX : X
         qXX --> qXXX : X
@@ -301,9 +299,7 @@ stateDiagram-v2
         qLXX --> qLXXX : X
     }
 
-    %% Bloco de Unidades
     state "Bloco de Unidades" as Unidades {
-        [*] --> qU0
         qU0 --> qI : I
         qI --> qII : I
         qII --> qIII : I
@@ -314,13 +310,20 @@ stateDiagram-v2
         qVII --> qVIII : I
     }
 
-    %% Conexões verticais entre blocos
+    %% Conexões entre os Blocos
     [*] --> Milhares
-    Milhares --> Centenas : C, D
-    Centenas --> Dezenas : X, L
-    Dezenas --> Unidades : I, V
+    Milhares --> qH0 : C, D
+    Milhares --> qT0 : X, L
+    Milhares --> qU0 : I, V
+    
+    Centenas --> qT0 : X, L
+    Centenas --> qU0 : I, V
+    
+    Dezenas --> qU0 : I, V
 
-    %% Aceitação final
-    Unidades --> [*]
----
-
+    %% Aceitação Final
+    Milhares --> [*] : ""
+    Centenas --> [*] : ""
+    Dezenas --> [*] : ""
+    Unidades --> [*] : ""
+```
