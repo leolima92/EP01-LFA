@@ -310,20 +310,12 @@ stateDiagram-v2
         qVII --> qVIII : I
     }
 
-    %% Conexões entre os Blocos
+    %% Conexões verticais entre blocos
     [*] --> Milhares
-    Milhares --> qH0 : C, D
-    Milhares --> qT0 : X, L
-    Milhares --> qU0 : I, V
-    
-    Centenas --> qT0 : X, L
-    Centenas --> qU0 : I, V
-    
-    Dezenas --> qU0 : I, V
+    Milhares --> Centenas : C, D
+    Centenas --> Dezenas : X, L
+    Dezenas --> Unidades : I, V
 
-    %% Aceitação Final
-    Milhares --> [*] : ""
-    Centenas --> [*] : ""
-    Dezenas --> [*] : ""
-    Unidades --> [*] : ""
+    %% Aceitação final
+    Unidades --> [*]
 ```
