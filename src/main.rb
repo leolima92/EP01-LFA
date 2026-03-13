@@ -46,26 +46,22 @@ class ADF
         next
 
       # muda para dezenas sem consumir símbolo
-      in ["X" | "L", "q0" | "qM1" | "qM2" | "qM3"]
+      in ["X" | "L", "q0" | "qM1" | "qM2" | "qM3" | "qH0" | "qC" | "qCC" | "qCCC" | "qD" | "qDC" | "qDCC" | "qDCCC" | "qHF"]
         estado = "qT0"
         next
 
       # muda para unidades sem consumir símbolo
-      in ["I" | "V", "q0" | "qM1" | "qM2" | "qM3"]
+      in ["I" | "V", "q0" | "qM1" | "qM2" | "qM3" | "qC" | "qCC" | "qCCC" | "qD" | "qDC" | "qDCC" | "qDCCC" | "qHF"]
         estado = "qU0"
         next
 
-      in ["", "q0" | "qM1" | "qM2" | "qM3"]
+      in ["", "q0" | "qM1" | "qM2" | "qM3" | "qC" | "qCC" | "qCCC" | "qD" | "qDC" | "qDCC" | "qDCCC" | "qHF"]
         puts "Aceito "
         puts "Valor decimal: #{@total}"
         break
 
   
-      # CENTENAS (TODO DO GRUPO)
-   
-      in ["C" | "D", "qH0"]
-        puts "TODO: implementar centenas"
-        break
+      # CENTENAS
         
       in ["C", "qH0"]
         estado = "qC"
@@ -95,11 +91,11 @@ class ADF
         estado = "qD"
         @total += 500
       
-      in["C", "qD"]
+      in ["C", "qD"]
         estado = "qDC"
         @total += 100
 
-      in["C", "qDC"]
+      in ["C", "qDC"]
         estado = "qDCC"
         @total += 100
 
