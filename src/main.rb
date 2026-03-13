@@ -72,7 +72,12 @@ class ADF
         @total += 100
 
       in ["D", "qC"]
-        estado = "qD"
+        estado = "qHF" #estado final das centenas
+        @total += 300
+
+      in ["M", "qC"]
+        estado = "qHF"
+        @total += 800
 
       in ["C", "qC"]
         estado = "qCC"
@@ -85,12 +90,30 @@ class ADF
       in ["C", "qCCC"]
         puts "Erro"
         break
-
       
       in ["D", "qH0"]
         estado = "qD"
         @total += 500
       
+      in["C", "qD"]
+        estado = "qDC"
+        @total += 100
+
+      in["C", "qDC"]
+        estado = "qDCC"
+        @total += 100
+
+      in ["C", "qDCC"]
+        estado = "qDCCC"
+        @total += 100
+
+      in ["C", "qDCCC"]
+        puts "Erro"
+        break
+
+      in ["D", "qD"]
+        puts "Erro"
+        break
       # DEZENAS
 
       in ["X", "qT0"]
