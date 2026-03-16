@@ -78,9 +78,11 @@ O alfabeto de saída corresponde aos valores decimais que podem ser emitidos dur
 
 ```
 
-Γ = { 1, 5, 10, 50, 100, 500, 1000 }
+Γ = { 1, 3, 5, 8, 10, 30, 50, 80, 100, 300, 500, 800, 1000 }
 
 ```
+
+Valores como 3, 8, 30, 80, 300 e 800 aparecem pois eles são emitidos durante as transições para corrigir as notações de subtração, como IV, IX, XL, etc.
 
 ---
 
@@ -144,6 +146,25 @@ Isso ocorre no caso da conversão de **IV**, onde:
 Portanto a saída é produzida **na transição**, característica do modelo de **Mealy**.
 
 ---
+
+### Transições sem saída
+
+O autômato também possui transições lógicas que servem apenas para mudar o contexto da leitura sem consumir o símbolo e nem emitir saída.
+
+Nesses casos, a função de saída resulta em um conjunto vazio ($\lambda = \emptyset$).
+
+Exemplo (Lendo C após ler um M):
+```
+
+δ(qM1, C) → qH0
+λ(qM1, C) = ∅
+
+```
+
+No nosso projeto, isso é implementado usando o comando `next`, que altera o estado atual para o próximo grupo, mas repassa o mesmo símbolo de entrada para ser reavaliado e ser capaz de gerar uma saída na próxima transição entre estados.
+
+---
+
 
 # Regras da Numeração Romana
 
