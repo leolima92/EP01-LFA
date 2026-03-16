@@ -231,7 +231,7 @@ EP01-LFA/
 │   └── main.rb
 │
 ├── docs/
-│   └── automato.mmd
+│   └── modelagem.mmd
 │
 └── README.md
 
