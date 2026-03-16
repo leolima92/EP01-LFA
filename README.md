@@ -153,7 +153,7 @@ O autômato também possui transições lógicas que servem apenas para mudar o 
 
 Nesses casos, a função de saída resulta em um conjunto vazio ($\lambda = \emptyset$).
 
-Exemplo (Lendo "C" após ler um "M"):
+Exemplo (Lendo C após ler um M):
 ```
 
 δ(qM1, C) → qH0
